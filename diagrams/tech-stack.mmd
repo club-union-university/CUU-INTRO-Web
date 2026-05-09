@@ -1,0 +1,30 @@
+---
+config:
+  theme: base
+  themeVariables:
+    background: "transparent"
+    primaryColor: "#0a0a1f"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#a5b4fc"
+    secondaryColor: "#0a0a1f"
+    secondaryTextColor: "#e0e7ff"
+    secondaryBorderColor: "#818cf8"
+    tertiaryColor: "#1e1b4b"
+    tertiaryTextColor: "#e0e7ff"
+    tertiaryBorderColor: "#818cf8"
+    lineColor: "#c7d2fe"
+    fontFamily: "'Pretendard', 'Apple SD Gothic Neo', 'Helvetica Neue', sans-serif"
+    fontSize: "16px"
+    clusterBkg: "transparent"
+    clusterBorder: "#818cf8"
+    edgeLabelBackground: "#0a0a1f"
+---
+flowchart LR
+    Front["Frontend · CUU-FRONT-React<br/><br/>React 19<br/>TypeScript 5.7<br/>Vite 6<br/>TanStack Router · Query<br/>Tailwind CSS · shadcn/ui<br/>Zustand · Zod · React Hook Form<br/>Firebase Auth (Client SDK)<br/>MSW · Vercel"]
+
+    Core["Backend Core · CUU-BACK-Spring<br/><br/>Spring Boot 4.0.6<br/>Java 17<br/>Spring Data JPA<br/>Spring Security<br/>JWT (jjwt 0.11)<br/>H2 / Postgres<br/>Firebase Admin SDK 9<br/>Lombok<br/>Gradle · Railway · Docker"]
+
+    Ai["Backend AI · CUU-BACK-Ai<br/><br/>NestJS<br/>TypeScript<br/>Google Gemini API<br/>Google Maps Platform<br/>Distance Matrix · Places<br/>Mock Store (dev)"]
+
+    Front -. REST + JWT .-> Core
+    Core -. HTTP JSON .-> Ai

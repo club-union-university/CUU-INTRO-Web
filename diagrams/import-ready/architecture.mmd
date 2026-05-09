@@ -1,0 +1,41 @@
+flowchart TB
+    User["회장 / 부원<br/>(웹 브라우저)"]
+
+    subgraph FE["Frontend · CUU-FRONT-React"]
+      direction TB
+      React["React 19 + Vite 6<br/>TanStack Router/Query<br/>Tailwind + shadcn/ui<br/>Zustand · Zod · RHF"]
+      MSW["MSW (dev mock)"]
+      FBClient["Firebase Auth<br/>(Client SDK)"]
+    end
+
+    subgraph Core["Backend Core · CUU-BACK-Spring"]
+      direction TB
+      Spring["Spring Boot 4 · Java 17<br/>JPA · Security · JWT"]
+      AiClient["AiClient<br/>(Spring → Nest)"]
+      DB[("RDB<br/>club / event / post<br/>school / user / notification")]
+      FBAdmin["Firebase Admin SDK"]
+    end
+
+    subgraph AiSrv["Backend AI · CUU-BACK-Ai"]
+      direction TB
+      Nest["NestJS<br/>ai.controller<br/>notifications.controller"]
+      MockStore["mock.store (dev)"]
+    end
+
+    Gemini["Google Gemini API"]
+    Maps["Google Maps Platform<br/>Distance Matrix · Places"]
+    FBAuth["Firebase Auth Server"]
+
+    User -->|HTTPS| React
+    React -. dev only .-> MSW
+    React -->|REST + JWT| Spring
+    React -->|signup / signin| FBClient
+    FBClient -->|verify token| FBAuth
+    Spring -->|verify| FBAdmin
+    FBAdmin --> FBAuth
+    Spring <-->|JPA| DB
+    Spring --> AiClient
+    AiClient -->|HTTP JSON| Nest
+    Nest --> MockStore
+    Nest -->|prompt| Gemini
+    Nest -->|geo query| Maps

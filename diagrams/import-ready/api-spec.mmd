@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph Spring["Spring Backend · Core API"]
+      direction TB
+      auth["/auth<br/>━━━━━━━━━━━━━<br/>POST /signup<br/>POST /login<br/>POST /firebase-verify<br/>POST /refresh"]
+      club["/clubs<br/>━━━━━━━━━━━━━<br/>POST / · 등록 신청<br/>GET /?status=pending<br/>POST /{id}/approve<br/>POST /{id}/join"]
+      event["/events<br/>━━━━━━━━━━━━━<br/>POST /draft<br/>POST /{id}/partner-respond<br/>GET /?status=approved<br/>POST /{id}/participants/apply"]
+      post["/posts · /boards<br/>━━━━━━━━━━━━━<br/>GET /boards/{type}/{id}/posts<br/>POST /posts<br/>POST /posts/{id}/comments<br/>GET /posts/{id}"]
+      school["/schools<br/>━━━━━━━━━━━━━<br/>GET /<br/>GET /{id}<br/>GET /{id}/facilities"]
+      notif["/notifications<br/>━━━━━━━━━━━━━<br/>GET /<br/>POST /{id}/read"]
+
+      auth ~~~ post
+      club ~~~ school
+      event ~~~ notif
+    end
+
+    subgraph Nest["NestJS · AI Server"]
+      direction TB
+      ai["/ai<br/>━━━━━━━━━━━━━<br/>POST /event/step1<br/>· 자연어 → 제목/분류/내용<br/>POST /event/step2<br/>· 카테고리 + 공지글 + 장소<br/>POST /post/categorize"]
+    end
+
+    Spring -. AiClient .-> Nest

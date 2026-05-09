@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+*.local
+.env
+.env.local
+*.tsbuildinfo
+.vite
+
+# OMC working state (per-session, never share)
+.omc/
+.claude/settings.local.json
