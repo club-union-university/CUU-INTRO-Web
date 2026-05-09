@@ -9,7 +9,7 @@ type Props = {
 
 export function SectionNav({ active, onJump }: Props) {
   return (
-    <nav className="pointer-events-none fixed right-6 top-1/2 z-30 -translate-y-1/2">
+    <nav className="pointer-events-none fixed right-6 top-1/2 z-30 hidden -translate-y-1/2 md:block">
       <ul className="pointer-events-auto flex flex-col gap-3">
         {SECTIONS.map((s) => {
           const isActive = s.id === active

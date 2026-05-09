@@ -10,7 +10,7 @@ export function Section2Service() {
       eyebrow="SERVICE"
       title={
         <>
-          <span className="brand-text">Crew</span> — 자연어 한 줄에서 5채널 발행까지.
+          <span className="brand-text">CUU</span> — 자연어 한 줄에서 5채널 발행까지.
         </>
       }
     >

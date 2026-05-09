@@ -22,6 +22,13 @@
     overflow: hidden;
   }
 
+  /* Mobile: free vertical scroll on the document, drop snap shell */
+  @media (max-width: 767px) {
+    body {
+      overflow: auto;
+    }
+  }
+
   ::selection {
     background-color: rgba(129, 140, 248, 0.28);
     color: inherit;
@@ -47,6 +54,22 @@
     scroll-snap-stop: always;
     position: relative;
     overflow: hidden;
+  }
+
+  /* Mobile: sections expand to content, scroll shell becomes a normal block */
+  @media (max-width: 767px) {
+    .scroll-shell {
+      height: auto;
+      overflow-y: visible;
+      scroll-snap-type: none;
+    }
+    .snap-section {
+      height: auto;
+      min-height: 100svh;
+      scroll-snap-align: none;
+      scroll-snap-stop: normal;
+      overflow: visible;
+    }
   }
 
   .grid-bg {

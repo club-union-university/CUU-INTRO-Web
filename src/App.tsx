@@ -50,7 +50,7 @@ export default function App() {
               C
             </span>
             <span className="mono text-sm font-semibold tracking-widest text-white/80">
-              CREW
+              CUU
             </span>
             <span className="mono text-[10px] uppercase tracking-widest text-white/30">
               · CUU 2026
