@@ -55,39 +55,38 @@ export function Section4Flow() {
 
 function PublishFanout() {
   return (
-    <div className="card relative flex flex-col rounded-2xl p-6">
+    <div className="card flex flex-col rounded-2xl p-5 sm:p-6">
       <div className="mono mb-4 text-[10px] uppercase tracking-widest text-white/40">
         Fan-out · 1 input → 5 channels
       </div>
-      <div className="relative flex-1">
+      <div className="flex flex-1 flex-col items-center gap-3 sm:gap-4">
         <motion.div
           initial={{ scale: 0.85, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ amount: 0.4 }}
           transition={{ duration: 0.5 }}
-          className="absolute left-1/2 top-6 -translate-x-1/2"
         >
-          <div className="relative">
-            <div className="brand-glow rounded-2xl bg-ink-900/80 px-5 py-3">
-              <div className="mono text-[10px] uppercase tracking-widest text-brand-300/80">
-                approval
-              </div>
-              <div className="mt-1 text-sm font-semibold">행사 승인 1회</div>
+          <div className="brand-glow rounded-2xl bg-ink-900/80 px-5 py-3 text-center">
+            <div className="mono text-[10px] uppercase tracking-widest text-brand-300/80">
+              approval
             </div>
+            <div className="mt-1 text-sm font-semibold">행사 승인 1회</div>
           </div>
         </motion.div>
 
         <svg
-          viewBox="0 0 480 280"
-          className="absolute inset-x-0 top-[68px] mx-auto h-[160px] w-full"
+          viewBox="0 0 480 200"
+          preserveAspectRatio="none"
+          className="h-[110px] w-full sm:h-[140px]"
           fill="none"
+          aria-hidden="true"
         >
           {[
-            'M240 0 C 240 60, 60 80, 60 200',
-            'M240 0 C 240 60, 160 90, 160 200',
-            'M240 0 C 240 100, 240 150, 240 200',
-            'M240 0 C 240 60, 320 90, 320 200',
-            'M240 0 C 240 60, 420 80, 420 200',
+            'M240 0 C 240 50, 60 70, 60 200',
+            'M240 0 C 240 50, 160 80, 160 200',
+            'M240 0 C 240 80, 240 130, 240 200',
+            'M240 0 C 240 50, 320 80, 320 200',
+            'M240 0 C 240 50, 420 70, 420 200',
           ].map((d, i) => (
             <motion.path
               key={i}
@@ -109,7 +108,7 @@ function PublishFanout() {
           </defs>
         </svg>
 
-        <div className="absolute inset-x-0 bottom-0 grid grid-cols-5 gap-2 px-1">
+        <div className="grid w-full grid-cols-5 gap-1.5 sm:gap-2">
           {PUBLISH_TARGETS.map((t, i) => (
             <motion.div
               key={t.id}
@@ -117,13 +116,17 @@ function PublishFanout() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ amount: 0.4 }}
               transition={{ delay: 0.6 + i * 0.08, duration: 0.45 }}
-              className="card flex flex-col rounded-xl p-2.5"
+              className="card flex flex-col rounded-xl p-2 sm:p-2.5"
             >
               <span className="mono text-[9px] uppercase tracking-widest text-brand-300/80">
                 ch {String(i + 1).padStart(2, '0')}
               </span>
-              <span className="mt-1 text-[12px] font-semibold leading-tight">{t.label}</span>
-              <span className="mt-1 text-[10px] leading-snug text-white/50">{t.detail}</span>
+              <span className="mt-1 text-[11px] font-semibold leading-tight sm:text-[12px]">
+                {t.label}
+              </span>
+              <span className="mt-1 hidden text-[10px] leading-snug text-white/50 sm:block">
+                {t.detail}
+              </span>
             </motion.div>
           ))}
         </div>
